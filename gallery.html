@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>gallery</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Kodchasan:wght@300;400&family=Lacquer&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+
+<main class="container">
+
+  <section class="window window-wide banner-tile" aria-hidden="false">
+    <div class="window-body banner no-padding" id="galleryBanner" tabindex="0" role="link" aria-label="Go to home">
+      <div class="media">
+        <img id="bannerImage" src="assets/banner.JPEG" alt="banner" />
+      </div>
+    </div>
+  </section>
+
+  <section class="window window-wide gallery-window">
+
+    <div class="window-header" id="galleryHeader">
+      <h1>photo album</h1>
+    </div>
+
+    <div class="window-body gallery-body fixed-gallery">
+      <button class="nav left" id="prevBtn" aria-label="Previous image">◀</button>
+
+      <div class="carousel" id="carousel">
+        <img id="galleryImage" src="" alt="gallery image" />
+        <div class="image-overlay" aria-hidden="true"></div>
+      </div>
+
+      <button class="nav right" id="nextBtn" aria-label="Next image">▶</button>
+    </div>
+
+    <div class="window-footer" id="counter">1 / 1</div>
+  </section>
+
+</main>
+
+<script type="module" src="gallery.js"></script>
+</body>
+</html>
