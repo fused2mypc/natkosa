@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nat y Kosa's Webhouse</title>
+  <title>natkosa</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Kodchasan:wght@300;400&family=Lacquer&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon_io/apple-touch-icon.png">
+  <link rel="manifest" href="assets/icons/favicon_io/site.webmanifest">
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -13,77 +18,231 @@
 
   <main class="container">
 
+    <!-- BANNER -->
     <section class="window window-wide">
       <div class="window-header">
         <h1>Nat y Kosa's Webhouse</h1>
       </div>
+
       <div class="window-body banner no-padding">
-        <div class ="media">
-            <img src="assets/banner.JPEG" alt="banner" />
+        <div class="media">
+          <img src="assets/banner.JPEG" alt="banner" />
         </div>
       </div>
     </section>
 
-    <section class="grid">
+    <!-- GRID -->
+<section class="columns">
 
-      <div class="window">
-        <div class="window-header">updates</div>
-        <div class="window-body">
-          <p><strong>May 05 2026</strong></p>
-          <p>site launch! HAPPY ONE YEAR BABY!!!!! &lt;3</p>
-        </div>
+  <!-- LEFT COLUMN -->
+  <div class="column">
+
+    <!-- CALENDAR -->
+    <div class="window calendar-window">
+
+      <div class="window-header calendar-header">
+
+        <button id="prevMonth" class="calendar-nav">
+          &lt;
+        </button>
+
+        <span id="calendarTitle">
+          May 2026
+        </span>
+
+        <button id="nextMonth" class="calendar-nav">
+          &gt;
+        </button>
+
       </div>
 
+      <div class="window-body calendar-body">
+
+        <!-- weekday labels -->
+        <div class="calendar-weekdays">
+          <span>S</span>
+          <span>M</span>
+          <span>T</span>
+          <span>W</span>
+          <span>T</span>
+          <span>F</span>
+          <span>S</span>
+        </div>
+
+        <!-- generated days -->
+        <div id="calendarDays" class="calendar-days"></div>
+
+      </div>
+
+    </div>
+
+    <!-- UPDATES -->
     <div class="window">
-      <div class="window-header">currently</div>
-      <div class="window-body">
-        <p><img src="assets/icons/love.webp" class="icon"> celebrating one year anni</p>
-        <p><img src="assets/icons/tv2.webp" class="icon"> watching Breaking Bad</p>
-        <p><img src="assets/icons/game.webp" class="icon"> playing Undertale</p>
+
+      <div class="window-header">
+        updates
       </div>
+
+      <div class="window-body">
+        <p><strong>May 08 2026</strong></p>
+        <p>mobile support+calendar+minor improvements+MUSICAA</p>
+        <p><strong>May 05 2026</strong></p>
+        <p>site launch! HAPPY ONE YEAR BABY!!!!! &lt;3</p>
+      </div>
+
     </div>
 
-    <div class="window tall">
-        <div class="window-header">guestbook</div>
+  </div>
 
-        <div class="window-body">
-            <p class="guestbook-name">Feature coming soon!</p>
-        </div>
+  <!-- MIDDLE COLUMN -->
+  <div class="column">
 
-        <div class="window-footer">
-            &gt; type here
-        </div>
+    <!-- CURRENTLY -->
+    <div class="window">
+
+      <div class="window-header">
+        currently
+      </div>
+
+      <div class="window-body">
+
+        <p>
+          <img src="assets/icons/love.webp" class="icon">
+          celebrating one year anni
+        </p>
+
+        <p>
+          <img src="assets/icons/tv2.webp" class="icon">
+          watching Breaking Bad
+        </p>
+
+        <p>
+          <img src="assets/icons/game.webp" class="icon">
+          playing Undertale
+        </p>
+
+      </div>
+
     </div>
 
-      <div class="window square">
-        <div class="window-header">Kiki</div>
-        <div class="window-body no-padding">
-            <div class="media">
-                <a href="gallery.html?type=kiki">
-                <img src="assets/kiki/kiki11.webp" alt="webp" />
-                </a>
-            </div>
-        </div>
+    <!-- PHOTO ALBUM -->
+    <div class="window square">
+
+      <div class="window-header">
+        Photo Album
+      </div>
+
+      <div class="window-body no-padding">
+
+        <div class="media">
+          <a href="gallery.html?type=album">
+
+            <img
+              src="assets/us/us14.webp"
+              alt="album preview"
+            />
+
+          </a>
         </div>
 
-      <div class="window square">
-        <div class="window-header">Photo Album</div>
-        <div class="window-body no-padding">
-            <div class="media">
-                <a href="gallery.html?type=album">
-                    <img src="assets/us/us14.webp" alt="album preview" />
-                </a>
-            </div>
-        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="column">
+
+    <!-- MUSIC PLAYER -->
+    <div class="window music-player">
+
+      <div class="music-bar">
+        <div class="music-progress"></div>
+      </div>
+
+      <div class="window-footer music-footer">
+
+        <button class="music-btn" id="playBtn">
+          ▶
+        </button>
+
+        <div class="music-info">
+
+          <div class="music-title">
+            breathe onto me - wisp
+          </div>
+
+          <div class="music-time">
+            0:00 / 3:57
+          </div>
+
         </div>
 
-    </section>
+      </div>
 
+      <audio id="audioPlayer" preload="metadata">
+
+        <source
+          src="assets/msx/wisp-breatheontome.mp3"
+          type="audio/mp3"
+        >
+
+      </audio>
+
+    </div>
+
+    <!-- GUESTBOOK -->
+    <div class="window">
+
+      <div class="window-header">
+        guestbook
+      </div>
+
+      <div class="window-body">
+        <p class="guestbook-name">
+          Feature coming soon!
+        </p>
+      </div>
+
+    </div>
+
+    <!-- KIKI -->
+    <div class="window square">
+
+      <div class="window-header">
+        Kiki
+      </div>
+
+      <div class="window-body no-padding">
+
+        <div class="media">
+          <a href="gallery.html?type=kiki">
+
+            <img
+              src="assets/kiki/kiki11.webp"
+              alt="kiki preview"
+            />
+
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
       dedicated to mi natashka :*
     </footer>
 
   </main>
+
+<script src="script.js"></script>
 
 </body>
 </html>
