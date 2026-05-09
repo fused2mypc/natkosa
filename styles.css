@@ -1,3 +1,4 @@
+/* Reset + Base */
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +21,7 @@ body {
   background-size: 14px 14px;
 }
 
+/* Layout container */
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -28,29 +30,40 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
+  /* allow children to shrink inside this flex column */
+  min-height: 0;
 }
 
 /* =========================
    COLUMN LAYOUT
-========================= */
+   ======================== */
 
 .columns {
   display: flex;
   gap: 25px;
   margin-top: 25px;
   align-items: flex-start;
+  /* ensure columns can shrink and not force overflow */
+  min-height: 0;
 }
 
 .column {
-  flex: 1;
-
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  /* allow column children to shrink (prevents images from growing column) */
+  min-height: 0;
 }
 
+/* Use an explicit square helper that preserves square tiles on all viewports by default.
+   On small screens you can change this to a max-height if you prefer non-square tiles. */
 .square {
+  width: 100%;
   aspect-ratio: 1 / 1;
+  display: block;
+  min-width: 0;
+  min-height: 0;
 }
 
 /* WINDOW SYSTEM */
@@ -60,6 +73,10 @@ body {
   background: #7ea06f;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  /* make window a flexible item that can shrink/grow inside .column */
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .window:hover {
@@ -75,9 +92,10 @@ body {
 }
 
 .window-body {
-  flex: 1;
+  flex: 1 1 auto;
   padding: 10px;
   position: relative;
+  min-height: 0;
 
   /* subtle inner texture */
   background-image: radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1px);
@@ -96,11 +114,16 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden; /* prevent child content from bubbling out */
 }
 
 .media img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -113,6 +136,7 @@ body {
   transition: filter 0.25s ease;
 }
 
+/* Banner exceptions */
 .banner .media img {
   filter: none;
   transition: none;
@@ -131,6 +155,7 @@ body {
   display: block;
 }
 
+/* overlay texture */
 .media::after {
   content: "";
   position: absolute;
@@ -158,6 +183,8 @@ body {
 /* BANNER */
 .banner .media {
   height: 290px; /* increase height for less cropping */
+  /* if inside a flexible column ensure banner doesn't force growth */
+  min-height: 0;
 }
 
 .banner img {
@@ -214,24 +241,23 @@ a {
   filter: invert(1);
 }
 
-
 /* =========================
    MUSIC PLAYER (updated)
-========================= */
+   ======================== */
 
 .music-player {
-  /* allow the music tile to stretch to the column's height */
   align-self: stretch;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
 }
 
-/* ensure the window fills the music-player vertically */
 .music-player .window {
   height: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 /* top playhead bar */
@@ -283,8 +309,9 @@ a {
 
 /* text block */
 .music-info {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
+  min-height: 0;
 }
 
 .music-title {
@@ -302,7 +329,7 @@ a {
 
 /* =========================
    MOBILE
-========================= */
+   ======================== */
 
 @media (max-width: 800px) {
 
@@ -314,19 +341,31 @@ a {
     flex-direction: column;
   }
 
+  /* keep tiles square on mobile to avoid a single tile expanding beyond others */
   .square {
-    aspect-ratio: auto;
+    aspect-ratio: 1 / 1;
   }
 
   .window {
     width: 100%;
   }
 
+  /* If you prefer not-square on mobile, replace aspect-ratio above with a max-height:
+     .square { aspect-ratio: auto; max-height: 320px; } */
+
+  /* ensure images never force extra height on mobile either */
+  .media img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 /* =========================
    CALENDAR
-========================= */
+   ======================== */
 
 .calendar-window {
   overflow: hidden;
@@ -393,61 +432,44 @@ a {
 
 /* =========================
    SPECIAL DAYS
-========================= */
+   ======================== */
 
 .special-day {
   position: relative;
-
   cursor: help;
-
   font-weight: bold;
 }
 
 /* tiny corner marker */
 .special-day::before {
   content: "!";
-
   position: absolute;
   top: 1px;
   right: 2px;
-
   font-size: 0.5rem;
   opacity: 0.9;
 }
 
 /* tooltip */
 .special-day::after {
-
   content: attr(data-tooltip);
-
   position: absolute;
-
   left: 50%;
   bottom: 110%;
-
   transform: translateX(-50%);
-
   padding: 4px 6px;
-
   width: max-content;
   max-width: 140px;
-
   background: #d9e9cf;
   color: #1c2817;
-
   border: 1px solid #476b3c;
-
   font-family: "MS UI Gothic", sans-serif;
   font-size: 9px;
   line-height: 1.3;
-
   opacity: 0;
   pointer-events: none;
-
   transition: opacity 0.15s ease;
-
   z-index: 20;
-
   white-space: nowrap;
 }
 
